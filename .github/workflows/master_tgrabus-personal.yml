@@ -22,11 +22,15 @@ jobs:
           dotnet-version: '6.0.x'
           include-prerelease: true
 
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
       - name: Build with dotnet
-        run: dotnet build src/Personal.Web/Personal.Web.csproj --configuration Release
+        run: dotnet build ".\src\Personal.Web\Personal.Web.csproj" --configuration Release
           
       - name: dotnet publish
-        run: dotnet publish src/Personal.Web/Personal.Web.csproj -c Release -o ${{env.DOTNET_ROOT}}/myapp
+        run: dotnet publish ".\src\Personal.Web\Personal.Web.csproj" -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
