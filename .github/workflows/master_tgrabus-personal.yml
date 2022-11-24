@@ -34,10 +34,12 @@ jobs:
         working-directory: src\Personal.Web\ClientApp
 
       - name: Build with dotnet
-        run: dotnet build ".\src\Personal.Web\Personal.Web.csproj" --configuration Release
+        run: dotnet build Personal.Web.csproj --configuration Release
+        working-directory: src\Personal.Web
           
       - name: dotnet publish
-        run: dotnet publish ".\src\Personal.Web\Personal.Web.csproj" -c Release -o ${{env.DOTNET_ROOT}}/myapp
+        run: dotnet publish Personal.Web.csproj -c Release -o ${{env.DOTNET_ROOT}}/myapp
+        working-directory: src\Personal.Web
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
