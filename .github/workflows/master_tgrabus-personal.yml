@@ -25,6 +25,14 @@ jobs:
         with:
           node-version: 18
 
+      - name: Install npm dependencies
+        run: npm install
+        working-directory: src\Personal.Web\ClientApp
+
+      - name: Build with npm
+        run: npm run build -- --configuration production
+        working-directory: src\Personal.Web\ClientApp
+
       - name: Build with dotnet
         run: dotnet build ".\src\Personal.Web\Personal.Web.csproj" --configuration Release
           
