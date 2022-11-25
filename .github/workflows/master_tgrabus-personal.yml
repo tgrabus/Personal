@@ -27,17 +27,18 @@ jobs:
 
       - name: Install npm dependencies
         run: npm install
-        working-directory: src\Personal.Web\ClientApp
+        working-directory: src/Personal.Web/ClientApp
 
       - name: Build with npm
         run: npm run build -- --configuration production
-        working-directory: src\Personal.Web\ClientApp
+        working-directory: src/Personal.Web/ClientApp
 
       - name: Build with dotnet
-        run: dotnet build ".\src\Personal.Web\Personal.Web.csproj" --configuration Release
+        run: dotnet build Personal.sln --configuration Release
+        working-directory: src
           
       - name: dotnet publish
-        run: dotnet publish ".\src\Personal.Web\Personal.Web.csproj" -c Release -o ${{env.DOTNET_ROOT}}/myapp
+        run: dotnet publish ./src/Personal.Web/Personal.Web.csproj -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
