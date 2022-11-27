@@ -14,19 +14,26 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
-      - name: Set up .NET Core
-        uses: actions/setup-dotnet@v1
+      - uses: actions/setup-node@v3
         with:
-          dotnet-version: '6.0.x'
-          include-prerelease: true
+          node-version: 18
+
+      - name: Install npm dependencies
+        run: npm install
+        working-directory: src/Personal.Web/ClientApp
+
+      - name: Build with npm
+        run: npm run build -- --configuration production
+        working-directory: src/Personal.Web/ClientApp
 
       - name: Build with dotnet
-        run: dotnet build --configuration Release
-
+        run: dotnet build Personal.sln --configuration Release
+        working-directory: src
+          
       - name: dotnet publish
-        run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
+        run: dotnet publish ./src/Personal.Web/Personal.Web.csproj -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
