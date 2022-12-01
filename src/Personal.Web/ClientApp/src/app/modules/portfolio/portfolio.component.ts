@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PortfolioComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+    // Intentionally left empty
+  }
 
   ngOnInit(): void {
+    // Intentionally left empty
   }
 
 }

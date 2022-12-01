@@ -11,6 +11,7 @@ export class MenuComponent implements OnInit {
   constructor(private offcanvasService: NgbOffcanvas) { }
 
   ngOnInit(): void {
+    // Intentionally left empty
   }
 
   open(content: any) {
