@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgbOffcanvas } from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
@@ -6,9 +6,12 @@ import { NgbOffcanvas } from "@ng-bootstrap/ng-bootstrap";
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss']
 })
-export class MenuComponent {
+export class MenuComponent implements OnInit {
 
   constructor(private offcanvasService: NgbOffcanvas) { }
+
+  ngOnInit(): void {
+  }
 
   open(content: any) {
     this.offcanvasService.open(content, { ariaLabelledBy: 'offcanvasNavbarLabel' });
