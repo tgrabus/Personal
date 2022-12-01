@@ -9,5 +9,6 @@ export class AppComponent {
   title = 'ClientApp';
 
   constructor() {
+    // Intentionally left empty
   }
 }
